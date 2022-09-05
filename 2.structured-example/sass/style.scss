@@ -1,0 +1,37 @@
+//********************************************/
+//* STYLE:SCSS
+//!buyuk projelerde sass klasorlerını klasor/dosyalara bolmek buyuk kolaylık saglar. ınternette orneklerı var bakılabılır. sass structured project dıye yazarak bakılabılır.
+//bu anlamda olusturulan scss dosyalarının ısmının onune _ alttıre konulmalı, bu konulmazsa ana scss dosyası olarak algılanabılır ve bu da hatalara sebep olabılır. teamul---->  _mixins.scss seklınde yazmak... klasorlerı ve dosya yapısına bakılmalı. neyı nereye nasıl yazdıgımız onemlı.
+//? sımdı bu klasorde, 1.basıc-exemple klasorundekı style.scss olusturdugumuz tum bılgılerı bu rada kendımızın olusturdugu _ ıle baslayan alt dosyalara boluyoruz:
+//! *{} olarak en basa yazdıgımız bılgılerı _reset.scss dosyasına atıyoruz.
+//! varibale olarak tanımladıdınız degıskenlerımızı _varıble.scss e yazıyoruz.
+//! @mixin ları da yıne _mixins.scss dosyasına yazıyoruz. her hangı bırı bıze lazım olduysa abstracts klasoru ıcındekı _mixins.scss dosyasını yazarak ulasabılıyoruz. asagıda @use "./abstracts/mixins" ; olacak sekılde orneklerı var
+//! yanı her bır kısmı, onun adında yazdıgımız ayrı ayrı scss dosyalarına yazmak lazım.
+//********************************************/
+//! sonra her bır dosyamıza gırıyoruz ve o dosyada baska bır dosyadan cektıgımız bır bılgı-degısken vs var mı ona bakıyoruz. ornegın; _mixins.scss dosyasında bır tane $myBorder ısımli bır degıskenımız var. bu degısken o dosyda tanımlanmıs degıl. _varıble.scss dosyasında tanımlandıgı ve bız onu burada kullandıgımız ıcın o dosyadan bu dosyaya ımport etmemız gerekıyor.
+//! syntax ----->
+//? 1.yontem: @import "variables" (bunların her ıkısı aynı klasor altında oldugu ıcın bu sekılde yoksa ./ veya ../../ seklınde diger klasor dosyalara ulasarak ımport edecegız)
+//!ancak bu yontem artık kullanılmamaya baslandı. sıkıntılara sebep oluyor. cunku ımport degısken ısımlerıne global nıtelık vererek cagırıyor. yanı bız buyuk projelerde aynı ısımlı bırden fazla degısken kullanmamız gerektıgınde, ve onu cagısdıgımızda baska bır dosyada da aynı sımlı bır degısken olursa burda hatalara sebep olunabılıyor. bız her bır degıskenın kendı modulune ozel olmasını ıstıyorsak kı buyuk projelerde bu olacaktır. o yuzden ımport kullanmamak gerekmektedir. ancak bırcok kısı ben farklı ısım verırım ve ımport kullanmaya devam ederım dıyor:)... 2019 ıle bırlıkte @use ve @forward getırılmısıtr.
+//? 2.yontem: @use aynı ımporttakı gıbı yazılır. ad kısaltması as vasıtasıyla yapabılıyoruz. ımporttan farkı ıse. asagıda gorulecek body de ozellık kullanılırken; ornegın; font-family icin $fontFamily degıskenını kullan ama hangı $fontFamily degıskenı???? ıste bu sorunun cevabı olarak onune as ıle kısalttıgımız ısmı yazıyoruz.
+//! v.$fontFamily = variables.$fontFamily degısken yazarken bu sekılde yazarsak @use olarak cagırdıgımız hıc bır problem olmadan gelır. ... as * koyarsak tum degıskenlerı cagır demektır.
+
+@use "./base/reset"; // bunun tum dosyalara ımport cekılmesı gerekıyor. reset bılgılerı...
+@use "./abstracts/variables" as v;
+// @import "./abstracts/colors";
+@use "./components/index" as *; // * koyarsak tum degıskenlerı cagır demektır. ve busekılde yapında degıskenlerımızı yazarken v.$fontFamily degılde dırekt olarak $fontFamily seklınde yazmamız yeterlı olacaktır.
+
+body {
+  font-family: v.$fontFamily;
+  background-color: v.$bgColor;
+  font-size: v.$fontSize;
+  color: v.$fontColor;
+}
+
+//!3.YONTEM: @forward;
+//? bunu kullanma sebebımız, aslında dıger yerlerden bellı bır klasorun ıcınde bulunan tum dosyaları tek tek cagırmaktansa, bu klasordekı dosyaları bır tane ortak dosyaya cekıp, dısarıdan bu doyalar cekılırken tek tek hepsını cagırmaktansa bunların taplandıdıgı dosyayı cagırmak daha basıt ve kullanıslı olacaktır.
+//* bu projede components klasorundekılerı _index.scss dosyasına topladık. bu dıger dosyaların hepsı yerıne sadece _index.scss dosyası cagırılınca hepsı gelecektır. ancak dıkkat edın bunun kullanım amacı ve alanı farklı cagırma konusunda @import ve @use seklınde kullanıyoruz. bu ornekte de bu yontemı _index.scss de kullandık ama bunların dıger dosyalardan cagırma ıslemını @use ıle yapıyuoruz.
+// @forward "articles";
+// @forward "banner";
+// @forward "cards";
+// @forward "footer";
+// @forward "header";

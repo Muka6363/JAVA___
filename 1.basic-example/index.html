@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SASS INTRO</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- asagıda termınal kısmına "sass --watch style.scss:style.css" bu komutu yazarak css ıle scss ı bırbırıyle ırtıbatlandırıyoruz. -->
+    <header>
+      <div>
+        <img src="./images/sass.png" alt="logo" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Browse</a></li>
+          <li><a href="#">Landing</a></li>
+          <li><a href="#">Pages</a></li>
+          <li><a href="#">Account</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <!-- main ıcerısınde bı sectıon bunun ıcerısınde ıse sol taraf ıcın asıde sag taraf ıcın ıse ne varsa ona gore dıvler hazırlamak lazım. bızım suankı ornekte resım var o yuzden bır dıv ıcınde ımg yaparız.  -->
+      <section class="banner">
+        <aside>
+          <h2>Clarusway's Sass Page</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos cum
+            animi voluptatem necessitatibus commodi ducimus cupiditate facere,
+            aliquam corporis hic?
+          </p>
+          <div>
+            <button>Browse Course</button>
+            <button>SASS-SCSS</button>
+          </div>
+          <!-- birdene fazla buton  varsa bunları her zaman farklı bır container icerisine atmak bızım ısımızı hep kolaylastırır-->
+        </aside>
+        <img src="./images/banner-img.png" alt="banner-img" />
+      </section>
+      <!-- main ıcerısınde asıde ve sectıonlar konumlenadırılır. -->
+      <section class="cards">
+        <div class="card1">Card1</div>
+        <div class="card2">Card2</div>
+        <div class="card3">Card3</div>
+        <div class="card4">Card4</div>
+      </section>
+
+      <section class="articles">
+        <article class="article1">Article1</article>
+        <article class="article2">Article2</article>
+      </section>
+    </main>
+
+    <footer>
+      <!-- asagıda tum dıvlerı kapsayan ayrı bır dıv olusturuyoruz.  -->
+      <p>Designed by Clarusway</p>
+      <div class="social-icons">
+        <div class="social1">S1</div>
+        <div class="social2">S2</div>
+        <div class="social3">S3</div>
+        <div class="social4">S4</div>
+        <div class="social5">S5</div>
+      </div>
+    </footer>
+  </body>
+</html>

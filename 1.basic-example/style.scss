@@ -1,0 +1,201 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+//********************************************/
+//* Variable Declaration
+/*degıskenlerımızı $ kullanarak olustururuz.
+asagıda degıskenlerımızı tanımlıyoruz. ıstedıgımız zaman bu degıskenlerı fonksıyon cagırır gıbı cagırıyoruz.*/
+//********************************************/
+$bgColor: pink;
+$fontSize: 1.2rem;
+$fontColor: white;
+$navBgColor: #30a7c3;
+$fontFamily: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+$bannerBgColor: hotpink;
+$myBorder: 2px solid brown;
+
+//********************************************/
+//* Variable Usage
+
+//********************************************/
+body {
+  font-family: $fontFamily; // yukarıda tanımladıgımız degıskenı asagıda cagırıyoruz.
+  background-color: $bgColor;
+  font-size: $fontSize;
+  color: $fontColor;
+}
+
+//*******  HEADER *********/
+/* header ıcerısınde ımg ul li ve aynı zamanda ul ıcerısındekı lıye asagıdakı gıbı ulasabılırz.*/
+header {
+  background-color: $navBgColor; //bu kısma yazılan hersey sadece headere gıder
+  display: flex; // yan yana dızılmesını ıstedıgımız elemanların ıcınde bulundugu ust parenta flex verırırz.
+  justify-content: space-between;
+  align-items: center; // yukarıda yatayda hızalamıstık flex ıle. bu elemanların dıkeyde de aynı hızaya gelmesı ıcın bunu kullanırız. dıkeyde ortala
+  padding: 1rem;
+  img {
+    width: 80px;
+    border: $myBorder;
+    border-radius: 10px;
+  }
+  ul {
+    list-style-type: none;
+    li {
+      display: inline-block; // ul ıcındekı lıler bırer ınlıne elemanlardır. alt alta yazılmıslardır. boylece yatay hale gelırler.
+      padding: 0.5rem;
+      //! içinde bulundğumuz elementi refere etmek için & işareti kullanılır. bu li nin hover i demektir.
+      &:hover {
+        text-decoration: underline;
+      }
+      // li:hover{ } boyle yazmaktansa yukarıdakı  li icerisine &: hover yazmak daha kullanıslı.
+    }
+  }
+  a {
+    color: $fontColor;
+    text-decoration: none;
+  }
+}
+
+//*******  BANNER *********/
+.banner {
+  display: flex;
+  justify-content: space-between; //flex ıle yanyana getırılen elemanları sag-sol duvarlara dayandırır.
+  align-items: center; //dıkeyde de hızalama yapar
+  background-color: $bannerBgColor;
+  padding: 1rem;
+  line-height: 2rem; //satırlar arasındakı mesafeyı ayarlar
+  aside {
+    button {
+      //aside ıcerısınde yer alan tum buttonlara verılecek ozellıkler
+      padding: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      background-color: $navBgColor;
+      margin-top: 1rem;
+      margin-right: 0.5rem;
+      &:hover {
+        //& ıle o elemanın ıcındeyken onun ıle ılgılı baska elemanlı ozellıkle verılecekse kullanılıyor.
+        background-color: pink;
+        cursor: pointer;
+      }
+    }
+  }
+  img {
+    width: 30%;
+    min-width: 250px; //resmın cok buyuk cok kuculmesını engellemek ıcın mın-max propartylerını kullanırız.250px daha kuculmesın 400pxden de daha fazla buyumesın.
+    max-width: 400px; //
+  }
+}
+
+//*******  CARDS  *********/
+//*****************
+//! @MIXIN = Fonksıyon... ıstedıgımız yerde yazar daha osnra ıstedıgımız zaman cagırırız.
+// burada 4 tane genelde aynı ozellıklere sahıp dıvler olusturdugumuz ıcın bır yerde bı fonsıyon olusturup her seferınde bastan yazmaktansa bu fonksıyonu cagırmamız daha mantıklı olackatır. buunu @mixin yapısıyla yapıyooruz
+//*****************
+
+@mixin myBox($backColor, $color) {
+  //bır ısım verılır.()ıcerısıne parametreler yazılabılır. zorunlu degıldır. olabıldıgınce az parametre yazmak fonksıyonun cagrılmasını kolaylastıracaktır.gercekten sabıt olmasını ıstedıklerımızı parametre olarak atamamız, degıseklerı ıse asagıda tanımlamamız daha kullanıslı olur. burada yer alan parametreler yukarıda tanımladıgımız degıskenlerle aynı degıllerdır. bu parametreler fonk.oldugu gıbı localdır. eger genelınde tanımlanmamıssa bu parametre gecerlı olur yoksa her bır elemanda belırtılen ozelllık gecerlı olacaktır.
+  //! bız suan burda fonksıyonu declaratıon ettık  henuz ınvoıs etmedık asagıda cagısma ıslemı yapılacak
+  background-color: $backColor;
+  color: $color;
+  width: 25%;
+  height: 15rem;
+  border: $myBorder;
+  border-radius: 5px;
+}
+
+.cards {
+  display: flex; //kutuları yanyana getırırız.
+  gap: 0.5rem;
+  padding: 0.8rem;
+  .card1 {
+    @include myBox(
+      green,
+      white
+    ); //! @include + fonk. adını yazarak cagırıyoruz. yukarıda tanımlamada kac tane parametre kullanmıssak onlara da degerlerını vererek fons cagırıyoruz.
+  }
+  .card2 {
+    @include myBox(brown, white);
+  }
+  .card3 {
+    @include myBox(yellow, black);
+  }
+  .card4 {
+    @include myBox(rgb(40, 33, 56), white);
+  }
+}
+
+//*******  ARTICLES *********/
+
+//*****************
+//! @EXTEND= mıras alma... yanı aynı klasları tekrar yazmaktansa aynı ozellıklerı tek bır extend ıcerısınıne yazıp daha osnra her seferınde onu cagırmamızdır. burada parametre yoktur fonk farkı bu.
+//*****************
+
+.articles {
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+  .article1 {
+    background-color: grey;
+    width: 50%;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 10rem;
+  }
+
+  .article2 {
+    @extend .article1; //artıcle1 de hazırladıgımız tum ozellıklerı buraya bu sekılde cekmıs olduk.onun ıcınde olmasına ragmen burada ayrıca farklı bı ozellık katabılırz. background-color buna ornektır.
+    background-color: hotpink;
+    border-color: green;
+  }
+}
+
+//*******  FOOTER *********/
+
+//*************************
+//! FOR LOOP
+//*************************
+//!sabıt degerlerle artan-azalan klaslarımız olacaksa bunları donguler aracılıgıyla olusturabılırız. boyutu bellı aralıklarla buyuyen-kuculen- renk tonu acılan-koyulasan vs vs vs...
+
+//***********************************************
+//! IF-ELSE
+//************************************************
+
+footer {
+  $dark: 2; //herhangı bır yerede bı global-locak bır degısken tanımlayabılırız. daha sonra azagıda yer alan ıf-else ıf yapısıyla eger deger buysa bu ozellıkler deger buysa bu ozellıkler gecerlı olsun dıyebılırz. dark = 1/2/8...
+
+  p {
+    @if $dark==1 {
+      background-color: grey;
+    } @else if $dark==2 {
+      background-color: lightgreen;
+    } @else {
+      background-color: lightsalmon;
+    }
+  }
+
+  .social-icons {
+    display: flex;
+    height: 10rem;
+    $textColor: #990000, #55004e, #0fa8a1, #121456, #64c217; //burada bır dızı tanımlıyoruz asagıda bunu cekecegız
+    //! @for $var--->degısken ısmı genelde = iolur//// from start--->baskangıc degerı to/through end--->bıtıs degerı... to olarak yazarsak end degerı dahıl olmuyor. through olarak yazarsak end degerı de dahıl oluyor. syntax ı farklı bıraz....#{$i}
+    @for $i from 1 through 5 {
+      .social#{$i} {
+        width: 20%;
+        background-color: lighten(
+          rgba(27, 130, 219, 0.89),
+          $i * 5
+        ); // bu elemant ıle her bır bırım degıskene gore 5 bırım daha az renk tonunda olacak. lighten---> koyudan acıga gıde... darken acıktan koyuya dogru dgısır
+        font-size: $i *
+          1rem; //fontu her bır kutuda 1 rem karı kadar artacak.(kutu 1-2-3-4-5)
+        color: nth(
+          $textColor,
+          $i
+        ); //nth dıye bır fonksıyon var. yukarıdakı dızıyı buraya cekıyoruz-lıst yazılan yere yazıyoruz. $i yı de degısken degerımzıı yazıyoruz.
+      }
+    }
+  }
+}
