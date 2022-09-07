@@ -6,9 +6,10 @@
 $primary-color: #272727;
 $secondary-color: #66ff00;
 $text-color: #eee;
+$iframe: url(https://c.tenor.com/P7qE_2iXLQMAAAAM/justice-democracy.gif);
 
 //font
 $height: 100vh;
 $font-family: Arial, Helvetica, sans-serif;
-$backImage: "../../images/project-4.jpg";
+$backImage: $iframe;
 $border: 3px double $secondary-color;

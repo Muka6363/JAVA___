@@ -1,0 +1,19 @@
+nav {
+  background-color: lighten($color: #1ad74c, $amount: 1);
+  font-size: 2rem;
+  height: 20vh;
+  justify-content: center;
+  align-items: center;
+
+  ul {
+    display: flex;
+    justify-content: right;
+    text-align: center;
+  }
+  li {
+    color: aliceblue;
+    padding-right: 5rem;
+    list-style-type: none;
+  }
+  //     text-align: center;
+}

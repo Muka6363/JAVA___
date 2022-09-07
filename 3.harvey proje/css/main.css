@@ -37,7 +37,8 @@
   padding: 1rem;
   border-bottom: 5px solid #ff652f;
 }
-.about .about__job h2, .about .about__job h3 {
+.about .about__job h2,
+.about .about__job h3 {
   margin: 0.5rem 0;
 }
 .about .about__job h6 {
@@ -96,14 +97,10 @@
   text-align: center;
 }
 .home__name {
-  font-size: 5rem;
+  font-size: 50rem;
   padding: 1rem;
   margin-bottom: 1rem;
   border-bottom: 2px solid #fff;
-}
-.home__name--last {
-  color: red;
-  font-weight: 700;
 }
 
 .project-bgImg-container {
@@ -311,7 +308,9 @@ a {
   color: #eee;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: 400;
 }
 

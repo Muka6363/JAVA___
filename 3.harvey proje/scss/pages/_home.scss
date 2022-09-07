@@ -7,7 +7,7 @@
 }
 
 .home {
-  //    border: 2px solid red;
+  // border: 2px solid red;
   height: 80vh;
   display: flex;
   flex-direction: column;
@@ -15,14 +15,9 @@
   text-align: center;
 
   &__name {
-    font-size: 5rem;
+    font-size: 50rem;
     padding: 1rem;
     margin-bottom: 1rem;
     border-bottom: 2px solid #fff;
-
-    &--last {
-      color: red;
-      font-weight: 700;
-    }
   }
 }
