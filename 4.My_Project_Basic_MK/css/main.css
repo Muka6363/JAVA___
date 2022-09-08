@@ -1,27 +1,33 @@
 @charset "UTF-8";
-nav {
-  background-color: #1bdc4e;
-  font-size: 2rem;
-  height: 20vh;
-  justify-content: center;
-  align-items: center;
-}
-nav ul {
-  display: flex;
-  justify-content: right;
-  text-align: center;
-}
-nav li {
-  color: aliceblue;
-  padding-right: 5rem;
-  list-style-type: none;
-}
-
 /*_reset.scss dosyasına gonderılecek*/
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+p {
+  border: 5px solid red;
+  color: chartreuse;
+}
+
+nav {
+  background-color: #1bdc4e;
+  font-size: 2rem;
+  height: 20vh;
+  display: flex;
+  justify-content: right;
+  align-items: flex-end;
+}
+nav ul {
+  display: flex;
+  justify-content: right;
+  padding-bottom: 10px;
+}
+nav li {
+  color: aliceblue;
+  padding-right: 4rem;
+  list-style-type: none;
 }
 
 /*# sourceMappingURL=main.css.map */

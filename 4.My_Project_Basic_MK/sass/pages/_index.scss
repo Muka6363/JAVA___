@@ -2,18 +2,18 @@ nav {
   background-color: lighten($color: #1ad74c, $amount: 1);
   font-size: 2rem;
   height: 20vh;
-  justify-content: center;
-  align-items: center;
+  display: flex;
+  justify-content: right;
+  align-items: flex-end;
 
   ul {
     display: flex;
     justify-content: right;
-    text-align: center;
+    padding-bottom: 10px;
   }
   li {
     color: aliceblue;
-    padding-right: 5rem;
+    padding-right: 4rem;
     list-style-type: none;
   }
-  //     text-align: center;
 }
